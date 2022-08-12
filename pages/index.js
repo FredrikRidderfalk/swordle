@@ -93,7 +93,7 @@ Game process:
     - user enters a letter and a square is filled with that letter
     - when a user hits delete it deletes the previous letter
     - when a user hits enter it submits the word
-      -- if all aquares are not filled with letters then the word is not submitted
+      -- if all squares are not filled with letters then the word is not submitted
       -- if that word has already been used in a previous guess then the word is not submitted
   • Checking submitted words:
     - each letter is checked to see if it matches the solution
