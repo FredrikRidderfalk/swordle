@@ -1,6 +1,6 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Home.module.css";
 
 export default function Home() {
   return (
@@ -17,7 +17,7 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
+          Get started by editing{" "}
           <code className={styles.code}>pages/index.js</code>
         </p>
 
@@ -58,12 +58,50 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
       </footer>
     </div>
-  )
+  );
 }
+
+/*
+Data we need to track:
+  • Solution
+    - 5 letter string, e.g. "cloud"
+  • Past guesses
+    - an array of past guesses
+    - each past guess is an array of letter objects [{}, {}, {}, {}, {}]
+    - each object represents a letter in the guess word {key: "a", color: "yellow"}
+  • Current guess
+    - string "cloud"
+  • Keypad letters
+    - array of letter objects [{key: "a", color: "yellow"}, {key: "b", color: "green"}, {}, {}, {}]
+  • Number of turns
+    - an integer 0 - 6
+
+Game process:
+  • Entering words
+    - user enters a letter and a square is filled with that letter
+    - when a user hits delete it deletes the previous letter
+    - when a user hits enter it submits the word
+      -- if all aquares are not filled with letters then the word is not submitted
+      -- if that word has already been used in a previous guess then the word is not submitted
+  • Checking submitted words:
+    - each letter is checked to see if it matches the solution
+    - each letter is assigned a color based on its inclusion in the solution
+      -- exact matches are green
+      -- partial matches are yellow
+      -- no matches are gray
+    - the guess is added to the grid with the correct colors
+    - the current guess moves to the next row
+    - the keypad letters are updated
+  • Ending the game:
+    - when the guessed word fully matches the solution:
+      -- a modal pops up and says "Golly gosh, that was amazing!"
+    - when the user runs out of guesses:
+      -- a modal pops up and says "Unlucky"
+*/
